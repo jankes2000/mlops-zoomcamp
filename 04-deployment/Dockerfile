@@ -8,6 +8,7 @@ WORKDIR /app
 COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
+RUN mkdir ./output
                                     
 COPY [ "starter.py", "./" ]
 
@@ -15,4 +16,6 @@ COPY [ "starter.py", "./" ]
 
 EXPOSE 9696 
 
-ENTRYPOINT [ "python3", "starter.py", "2023", "5" ]
+ENTRYPOINT [ "python3", "starter.py" ]
+
+CMD  ["2023", "5"]

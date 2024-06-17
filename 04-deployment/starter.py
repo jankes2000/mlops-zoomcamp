@@ -51,8 +51,8 @@ if __name__ == '__main__':
     y_pred = model.predict(X_val)
 
 
-    print(statistics.mean(y_pred))
-
+    print(f"Mean predicted  duration = {statistics.mean(y_pred)}")
+    print(f"Standard deviation predicted duration = {statistics.stdev(y_pred)}")
 
     output_file = f'output/{taxi_type}_{year:04d}-{month:02d}.parquet'
 
