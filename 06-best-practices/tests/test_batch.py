@@ -2,6 +2,7 @@ import pandas as pd
 from datetime import datetime
 from pandas.testing import assert_frame_equal
 from batch import prepare_data
+from pandas.testing import assert_frame_equal
 
 def dt(hour, minute, second=0):
     return datetime(2023, 1, 1, hour, minute, second)
@@ -31,6 +32,11 @@ def test_prepare_data():
     result_df = prepare_data(df, categorical)
 
     assert result_df.shape[0] == expected_df.shape[0], f"Expected {expected_df.shape[0]} rows, but got {result_df.shape[0]}"
+
+    assert (result_df['PULocationID'] == expected_df['PULocationID']).all()
+  
+
+    #assert_frame_equal(result_df.reset_index(drop=True), expected_df.reset_index(drop=True))
 
     #assert_frame_equal(result_df.reset_index(drop=True), expected_df.reset_index(drop=True))
     #print(result_df)
